@@ -1,4 +1,4 @@
-const movieHeaders = new Headers()
+const movieHeaders = new Headers();
 movieHeaders.append('Authorization', 'Bearer Wookie2019');
 
 const movieRequest = new Request('https://wookie.codesubmit.io/movies', {

@@ -9,6 +9,8 @@ import { fetchMovies } from './api/wookie';
 import { Movie } from './types';
 import './App.css';
 import PageContainer from './components/PageContainer/PageContainer';
+import { Row } from './components/Row/Row';
+import { MovieDetails } from './components/MovieDetails/MovieDetails';
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
 
   useEffect(() => {
     fetchMovies(handleMovies);
-  });
+  }, []);
 
   return (
     <Router>
@@ -35,11 +37,18 @@ function App() {
 
   function Movie() {
     let { movieId } = useParams();
-    console.log('movieId', movieId);
+    const [movie, setMovie] = useState<Movie | undefined>(undefined);
+
+    useEffect(() => {
+      if (movies?.length > 0) {
+        const foundMovie = movies.find((movie) => movie.id === movieId);
+        setMovie(foundMovie);
+      }
+    }, [movies]);
+
     return (
       <PageContainer>
-        <div>movie</div>
-        <div>{movieId}</div>
+        {movie && <MovieDetails movie={movie}></MovieDetails>}
       </PageContainer>
     );
   }
@@ -47,11 +56,7 @@ function App() {
   function Home() {
     return (
       <PageContainer>
-        <div>
-          {movies.map((item, index) => {
-            return <img height="100" src={item.backdrop} key={index}></img>
-          })}
-        </div>
+        <Row genre={'All'} movies={movies}></Row>
       </PageContainer>
     );
   }

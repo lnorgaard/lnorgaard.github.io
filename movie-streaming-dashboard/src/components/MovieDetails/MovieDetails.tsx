@@ -1,38 +1,32 @@
+import { Movie } from '../../types';
 import './MovieDetails.css';
 
 type MovieDetailsProps = {
-    photo: string;
-    title: string;
-    rating: string;
-    year: string;
-    length: string;
-    director: string;
-    cast: string[];
-    description: string;
+    movie: Movie;
 }
 
 export function MovieDetails(props: MovieDetailsProps) {
 
-    const formattedCast = props.cast.join(', ');
+    const formattedCast = props.movie.cast.join(', ');
 
     return (
         <div className="MovieDetails-container">
             <div className="MovieDetails-picture-container">
-                <image className="MovieDetails-picture" />
+                <img className="MovieDetails-picture" src={props.movie.poster} />
             </div>
             <div className="MovieDetails-details-container">
                 <div className="MovieDetails-title-container">
-                    <span className="MovieDetails-title">{props.title}</span>
-                    <div className="MovieDetails-rating">{props.rating}</div>
+                    <span className="MovieDetails-title">{props.movie.title}</span>
+                    <div className="MovieDetails-rating">{props.movie.imdb_rating}</div>
                 </div>
                 <div className="MovieDetails-year-length-director">
-                    {`${props.year} | ${props.length} | ${props.director}`}
+                    {`${props.movie.released_on} | ${props.movie.length} | ${props.movie.director}`}
                 </div>
                 <div className="MovieDetails-cast">
                     {`Cast: ${formattedCast}`}
                 </div>
                 <div className="MovieDetails-description">
-                    {`Description: ${props.description}`}
+                    {`Description: ${props.movie.overview}`}
                 </div>
             </div>
         </div>
