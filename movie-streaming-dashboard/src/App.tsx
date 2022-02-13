@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useParams
 } from "react-router-dom";
-
+import { fetchMovies } from './api/wookie';
+import { Movie } from './types';
 import './App.css';
-import { Header } from './components/Header/Header';
 import PageContainer from './components/PageContainer/PageContainer';
 
 function App() {
+
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  function handleMovies(movies: Movie[]): void {
+    setMovies(movies);
+  }
+
+  useEffect(() => {
+    fetchMovies(handleMovies);
+  });
+
   return (
     <Router>
       <Routes>
-        <Route path="/movies" element={<Movies />}>
-        </Route>
         <Route path="/movies/:movieId" element={<Movie />}>
         </Route>
         <Route path="/" element={<Home />}>
@@ -24,20 +33,12 @@ function App() {
     </Router>
   );
 
-  function Movies() {
-    return (
-      <PageContainer>
-        <div>movies</div>
-      </PageContainer>
-    );
-  }
-
   function Movie() {
     let { movieId } = useParams();
     console.log('movieId', movieId);
     return (
       <PageContainer>
-        <div>movieee</div>
+        <div>movie</div>
         <div>{movieId}</div>
       </PageContainer>
     );
@@ -46,7 +47,11 @@ function App() {
   function Home() {
     return (
       <PageContainer>
-        <div>home</div>
+        <div>
+          {movies.map((item, index) => {
+            return <img height="100" src={item.backdrop} key={index}></img>
+          })}
+        </div>
       </PageContainer>
     );
   }

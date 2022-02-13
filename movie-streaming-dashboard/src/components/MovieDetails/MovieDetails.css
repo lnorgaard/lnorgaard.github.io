@@ -1,0 +1,25 @@
+.MovieDetails-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.MovieDetails-picture-container {
+
+}
+.MovieDetails-picture {}
+.MovieDetails-details-container {}
+.MovieDetails-title-container {
+    margin-bottom: 10px;
+}
+.MovieDetails-title {}
+.MovieDetails-rating {}
+.MovieDetails-year-length-director {}
+.MovieDetails-cast {
+    margin-bottom: 10px;
+}
+.MovieDetails-description {}
