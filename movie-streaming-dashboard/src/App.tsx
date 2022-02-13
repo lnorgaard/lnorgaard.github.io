@@ -6,11 +6,12 @@ import {
   useParams
 } from "react-router-dom";
 import { fetchMovies } from './api/wookie';
-import { Movie } from './types';
+import { Movie, MoviesOfGenre } from './types';
 import './App.css';
 import PageContainer from './components/PageContainer/PageContainer';
 import { Row } from './components/Row/Row';
 import { MovieDetails } from './components/MovieDetails/MovieDetails';
+import { sortMoviesByGenre } from './utils/movie-utils';
 
 function App() {
 
@@ -54,9 +55,20 @@ function App() {
   }
 
   function Home() {
+
+    const [moviesOfGenre, setMoviesOfGenre] = useState<MoviesOfGenre[]>([]);
+
+    useEffect(() => {
+      setMoviesOfGenre(sortMoviesByGenre(movies));
+    }, [movies]);
+
     return (
       <PageContainer>
-        <Row genre={'All'} movies={movies}></Row>
+        {moviesOfGenre.map((item, index) => {
+          return (
+            <Row moviesOfGenre={item} key={index}></Row>
+          );
+        })}
       </PageContainer>
     );
   }

@@ -13,3 +13,8 @@ export type Movie = {
     slug: string;
     title: string;
 }
+
+export type MoviesOfGenre = {
+    genre: string;
+    movies: Movie[];
+}

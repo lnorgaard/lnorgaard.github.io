@@ -1,4 +1,5 @@
 import { Movie } from '../../types';
+import { formatCast, formatYear } from '../../utils/movie-utils';
 import './MovieDetails.css';
 
 type MovieDetailsProps = {
@@ -7,7 +8,8 @@ type MovieDetailsProps = {
 
 export function MovieDetails(props: MovieDetailsProps) {
 
-    const formattedCast = props.movie.cast.join(', ');
+    const formattedCast = formatCast(props.movie.cast);
+    const formattedYear = formatYear(props.movie.released_on);
 
     return (
         <div className="MovieDetails-container">
@@ -16,11 +18,10 @@ export function MovieDetails(props: MovieDetailsProps) {
             </div>
             <div className="MovieDetails-details-container">
                 <div className="MovieDetails-title-container">
-                    <span className="MovieDetails-title">{props.movie.title}</span>
-                    <div className="MovieDetails-rating">{props.movie.imdb_rating}</div>
+                    <span className="MovieDetails-title">{props.movie.title} ({props.movie.imdb_rating})</span>
                 </div>
                 <div className="MovieDetails-year-length-director">
-                    {`${props.movie.released_on} | ${props.movie.length} | ${props.movie.director}`}
+                    {`${formattedYear} | ${props.movie.length} | ${props.movie.director}`}
                 </div>
                 <div className="MovieDetails-cast">
                     {`Cast: ${formattedCast}`}

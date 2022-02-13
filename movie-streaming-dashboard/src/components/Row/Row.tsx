@@ -1,22 +1,21 @@
 import { Link } from 'react-router-dom';
-import { Movie } from '../../types';
+import { MoviesOfGenre } from '../../types';
 import './Row.css';
 
 type RowProps = {
-    genre: string;
-    movies: Movie[];
+    moviesOfGenre: MoviesOfGenre;
 }
 
 export function Row(props: RowProps) {
     return (
         <div className="Row-container">
             <div className="Row-genre-container">
-                <span className="Row-genre">{props.genre}</span>
+                <span className="Row-genre">{props.moviesOfGenre.genre}</span>
             </div>
             <div className="Row-thumbnails-container">
-                {props.movies.map((item, index) => {
+                {props.moviesOfGenre.movies.map((item, index) => {
                     return (
-                        <Link className="Row-thumbnail" to={`/movies/${item.id}`} key={index}>
+                        <Link className="Row-thumbnail" to={`/movies/${item.id}`} key={index} title={item.title}>
                             <img height="150" src={item.backdrop}></img>
                         </Link>
                     );

@@ -9,10 +9,12 @@
 }
 
 .MovieDetails-picture-container {
-
+    width: 40%;
 }
 .MovieDetails-picture {}
-.MovieDetails-details-container {}
+.MovieDetails-details-container {
+    width: 40%;
+}
 .MovieDetails-title-container {
     margin-bottom: 10px;
 }
