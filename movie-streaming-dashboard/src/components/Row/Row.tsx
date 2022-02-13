@@ -16,7 +16,7 @@ export function Row(props: RowProps) {
             <div className="Row-thumbnails-container">
                 {props.movies.map((item, index) => {
                     return (
-                        <Link to={`/movies/${item.id}`} key={index}>
+                        <Link className="Row-thumbnail" to={`/movies/${item.id}`} key={index}>
                             <img height="150" src={item.backdrop}></img>
                         </Link>
                     );

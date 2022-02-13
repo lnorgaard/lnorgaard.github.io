@@ -1,0 +1,18 @@
+.Row-container {
+    width: 100%;
+}
+
+.Row-genre-container {
+    margin: 10px 0;
+}
+
+.Row-thumbnails-container {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.Row-thumbnail {
+    display: inline-block;
+    margin-right: 10px;
+}
