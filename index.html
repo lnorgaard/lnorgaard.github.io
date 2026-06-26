@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Young & Free - Kids Activities Near You</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==" crossorigin="" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Free activities for kids</p>
+        <h1>Young & Free</h1>
+        <p class="hero-description">
+          Find free local kids activities you can filter by age. Use the list below to discover fun, family-friendly options near you.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="controls-card">
+        <div class="control-group">
+          <label for="ageFilter">Filter by age</label>
+          <select id="ageFilter" aria-label="Filter activities by age range">
+            <option value="all">All ages</option>
+            <option value="0-3">0–3 years</option>
+            <option value="4-7">4–7 years</option>
+            <option value="8-12">8–12 years</option>
+            <option value="13-17">13–17 years</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="startDate">Date range</label>
+          <div class="date-range">
+            <input id="startDate" type="date" aria-label="Start date" />
+            <span class="date-separator">to</span>
+            <input id="endDate" type="date" aria-label="End date" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="searchInput">Search activities</label>
+          <input id="searchInput" type="search" placeholder="Search by activity type or location" />
+        </div>
+      </section>
+
+      <section aria-label="Activity results" class="results">
+        <div class="result-summary">
+          <p id="resultCount"></p>
+        </div>
+        <section class="map-card">
+          <div class="map-header">
+            <h2>Library event map</h2>
+            <p>Filtered events are grouped by library location. Map markers show the number of events at each branch.</p>
+          </div>
+          <div class="map-layout">
+            <div id="map"></div>
+            <div id="mapLegend" class="map-legend"></div>
+          </div>
+        </section>
+        <div id="activityList" class="activity-grid"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <h2>No activities found</h2>
+          <p>Try a different age range or search term to see more free kids activities near you.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
